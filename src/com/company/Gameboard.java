@@ -1,61 +1,41 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Gameboard {
-    String a1 = "_";
-    String a2 = "_";
-    String a3 = "_";
-    String a4 = "_";
-    String a5 = "_";
-    String a6 = "_";
-    String b1 = "_";
-    String b2 = "_";
-    String b3 = "_";
-    String b4 = "_";
-    String b5 = "_";
-    String b6 = "_";
-    String c1 = "_";
-    String c2 = "_";
-    String c3 = "_";
-    String c4 = "_";
-    String c5 = "_";
-    String c6 = "_";
-    String d1 = "_";
-    String d2 = "_";
-    String d3 = "_";
-    String d4 = "_";
-    String d5 = "_";
-    String d6 = "_";
-    String e1 = "_";
-    String e2 = "_";
-    String e3 = "_";
-    String e4 = "_";
-    String e5 = "_";
-    String e6 = "_";
-    String f1 = "_";
-    String f2 = "_";
-    String f3 = "_";
-    String f4 = "_";
-    String f5 = "_";
-    String f6 = "_";
-    String g1 = "_";
-    String g2 = "_";
-    String g3 = "_";
-    String g4 = "_";
-    String g5 = "_";
-    String g6 = "_";
+    public String[][] position = new String[6][];
 
-    public Gameboard(){
-
-    }
-    public String toString(){
-        return "        _______________\n" +
-                "        |"+a1+"|"+b1+"|"+c1+"|"+d1+"|"+e1+"|"+f1+"|"+g1+"|\n" +
-                "        |"+a2+"|"+b2+"|"+c2+"|"+d2+"|"+e2+"|"+f2+"|"+g2+"|\n" +
-                "        |"+a3+"|"+b3+"|"+c3+"|"+d3+"|"+e3+"|"+f3+"|"+g3+"|\n" +
-                "        |"+a4+"|"+b4+"|"+c4+"|"+d4+"|"+e4+"|"+f4+"|"+g4+"|\n" +
-                "        |"+a5+"|"+b5+"|"+c5+"|"+d5+"|"+e5+"|"+f5+"|"+g5+"|\n" +
-                "        |"+a6+"|"+b6+"|"+c6+"|"+d6+"|"+e6+"|"+f6+"|"+g6+"|\n" +
-                "        |1|2|3|4|5|6|7|";
+    public Gameboard() {
+        for (int i = 0; i < position.length; i++) {
+            String[] rows = new String[7];
+            for (int j = 0; j < 7; j++) {
+                rows[j] = "_";
+            }
+            position[i] = rows;
+        }
     }
 
+    public String toString() {
+        StringBuilder gameBoard = new StringBuilder();
+        String top = "        _______________\n";
+        String rowStart = "        |";
+        String rowEnd = "|\n";
+        String bottom = "        |1|2|3|4|5|6|7|";
+
+        gameBoard.append(top);
+        for (int i = 0; i < position.length; i++) {
+            gameBoard.append(rowStart);
+            for (int j = 0; j < position[i].length; j++) {
+                gameBoard.append(position[i][j]);
+                if (j < position[i].length - 1) {
+                    gameBoard.append("|");
+                }
+            }
+            gameBoard.append(rowEnd);
+        }
+        gameBoard.append(bottom);
+        String output = gameBoard.toString();
+
+        return output;
+    }
 }
